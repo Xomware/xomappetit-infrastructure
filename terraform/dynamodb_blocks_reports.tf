@@ -12,10 +12,11 @@
 ########################################
 
 resource "aws_dynamodb_table" "blocks" {
-  name         = "${var.app_name}-blocks"
-  billing_mode = "PAY_PER_REQUEST"
-  hash_key     = "userId"
-  range_key    = "blockedUserId"
+  deletion_protection_enabled = true
+  name                        = "${var.app_name}-blocks"
+  billing_mode                = "PAY_PER_REQUEST"
+  hash_key                    = "userId"
+  range_key                   = "blockedUserId"
 
   server_side_encryption {
     enabled     = true
@@ -40,10 +41,11 @@ resource "aws_dynamodb_table" "blocks" {
 }
 
 resource "aws_dynamodb_table" "reports" {
-  name         = "${var.app_name}-reports"
-  billing_mode = "PAY_PER_REQUEST"
-  hash_key     = "userId"
-  range_key    = "sortKey"
+  deletion_protection_enabled = true
+  name                        = "${var.app_name}-reports"
+  billing_mode                = "PAY_PER_REQUEST"
+  hash_key                    = "userId"
+  range_key                   = "sortKey"
 
   server_side_encryption {
     enabled     = true

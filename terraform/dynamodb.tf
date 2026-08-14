@@ -12,11 +12,12 @@
 # GSI author-index: authorUserId (PK) + createdAt (SK)
 ########################################
 resource "aws_dynamodb_table" "recipes" {
-  name           = "${var.app_name}-recipes"
-  billing_mode   = "PAY_PER_REQUEST"
-  read_capacity  = 0
-  write_capacity = 0
-  hash_key       = "recipeId"
+  deletion_protection_enabled = true
+  name                        = "${var.app_name}-recipes"
+  billing_mode                = "PAY_PER_REQUEST"
+  read_capacity               = 0
+  write_capacity              = 0
+  hash_key                    = "recipeId"
 
   server_side_encryption {
     enabled     = true
@@ -59,11 +60,12 @@ resource "aws_dynamodb_table" "recipes" {
 # GSI recipe-index: recipeId (PK) + cookedAt (SK)
 ########################################
 resource "aws_dynamodb_table" "cooks" {
-  name           = "${var.app_name}-cooks"
-  billing_mode   = "PAY_PER_REQUEST"
-  read_capacity  = 0
-  write_capacity = 0
-  hash_key       = "cookId"
+  deletion_protection_enabled = true
+  name                        = "${var.app_name}-cooks"
+  billing_mode                = "PAY_PER_REQUEST"
+  read_capacity               = 0
+  write_capacity              = 0
+  hash_key                    = "cookId"
 
   server_side_encryption {
     enabled     = true
@@ -110,12 +112,13 @@ resource "aws_dynamodb_table" "cooks" {
 # `diners` lists. `cooks-log` writes one row per chef + diner.
 ########################################
 resource "aws_dynamodb_table" "cook_participants" {
-  name           = "${var.app_name}-cook-participants"
-  billing_mode   = "PAY_PER_REQUEST"
-  read_capacity  = 0
-  write_capacity = 0
-  hash_key       = "userId"
-  range_key      = "cookedAtCookId"
+  deletion_protection_enabled = true
+  name                        = "${var.app_name}-cook-participants"
+  billing_mode                = "PAY_PER_REQUEST"
+  read_capacity               = 0
+  write_capacity              = 0
+  hash_key                    = "userId"
+  range_key                   = "cookedAtCookId"
 
   server_side_encryption {
     enabled     = true
@@ -145,12 +148,13 @@ resource "aws_dynamodb_table" "cook_participants" {
 # (one rating per user per recipe; upsert)
 ########################################
 resource "aws_dynamodb_table" "recipe_ratings" {
-  name           = "${var.app_name}-recipe-ratings"
-  billing_mode   = "PAY_PER_REQUEST"
-  read_capacity  = 0
-  write_capacity = 0
-  hash_key       = "recipeId"
-  range_key      = "userId"
+  deletion_protection_enabled = true
+  name                        = "${var.app_name}-recipe-ratings"
+  billing_mode                = "PAY_PER_REQUEST"
+  read_capacity               = 0
+  write_capacity              = 0
+  hash_key                    = "recipeId"
+  range_key                   = "userId"
 
   server_side_encryption {
     enabled     = true
@@ -179,12 +183,13 @@ resource "aws_dynamodb_table" "recipe_ratings" {
 # PK: recipeId, SK: commentId (uuid)
 ########################################
 resource "aws_dynamodb_table" "recipe_comments" {
-  name           = "${var.app_name}-recipe-comments"
-  billing_mode   = "PAY_PER_REQUEST"
-  read_capacity  = 0
-  write_capacity = 0
-  hash_key       = "recipeId"
-  range_key      = "commentId"
+  deletion_protection_enabled = true
+  name                        = "${var.app_name}-recipe-comments"
+  billing_mode                = "PAY_PER_REQUEST"
+  read_capacity               = 0
+  write_capacity              = 0
+  hash_key                    = "recipeId"
+  range_key                   = "commentId"
 
   server_side_encryption {
     enabled     = true
