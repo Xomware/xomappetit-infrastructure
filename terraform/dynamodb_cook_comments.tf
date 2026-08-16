@@ -6,10 +6,11 @@
 ########################################
 
 resource "aws_dynamodb_table" "cook_comments" {
-  name         = "${var.app_name}-cook-comments"
-  billing_mode = "PAY_PER_REQUEST"
-  hash_key     = "cookId"
-  range_key    = "commentId"
+  deletion_protection_enabled = true
+  name                        = "${var.app_name}-cook-comments"
+  billing_mode                = "PAY_PER_REQUEST"
+  hash_key                    = "cookId"
+  range_key                   = "commentId"
 
   server_side_encryption {
     enabled     = true

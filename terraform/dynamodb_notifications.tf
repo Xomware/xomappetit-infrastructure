@@ -10,10 +10,11 @@
 ########################################
 
 resource "aws_dynamodb_table" "notifications" {
-  name         = "${var.app_name}-notifications"
-  billing_mode = "PAY_PER_REQUEST"
-  hash_key     = "userId"
-  range_key    = "sortKey"
+  deletion_protection_enabled = true
+  name                        = "${var.app_name}-notifications"
+  billing_mode                = "PAY_PER_REQUEST"
+  hash_key                    = "userId"
+  range_key                   = "sortKey"
 
   server_side_encryption {
     enabled     = true

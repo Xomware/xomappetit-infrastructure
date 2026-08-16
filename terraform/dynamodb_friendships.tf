@@ -11,12 +11,13 @@
 ########################################
 
 resource "aws_dynamodb_table" "friendships" {
-  name           = "${var.app_name}-friendships"
-  billing_mode   = "PAY_PER_REQUEST"
-  read_capacity  = 0
-  write_capacity = 0
-  hash_key       = "userId"
-  range_key      = "friendUserId"
+  deletion_protection_enabled = true
+  name                        = "${var.app_name}-friendships"
+  billing_mode                = "PAY_PER_REQUEST"
+  read_capacity               = 0
+  write_capacity              = 0
+  hash_key                    = "userId"
+  range_key                   = "friendUserId"
 
   server_side_encryption {
     enabled     = true

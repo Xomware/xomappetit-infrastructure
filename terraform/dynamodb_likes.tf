@@ -8,10 +8,11 @@
 ########################################
 
 resource "aws_dynamodb_table" "recipe_likes" {
-  name         = "${var.app_name}-recipe-likes"
-  billing_mode = "PAY_PER_REQUEST"
-  hash_key     = "recipeId"
-  range_key    = "userId"
+  deletion_protection_enabled = true
+  name                        = "${var.app_name}-recipe-likes"
+  billing_mode                = "PAY_PER_REQUEST"
+  hash_key                    = "recipeId"
+  range_key                   = "userId"
 
   server_side_encryption {
     enabled     = true
