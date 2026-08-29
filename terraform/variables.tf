@@ -106,3 +106,17 @@ variable "github_backend_subjects" {
     "repo:Xomware/xomappetit-backend",
   ]
 }
+
+variable "github_infrastructure_subjects" {
+  description = "OIDC subject prefixes for this infrastructure repository"
+  type        = list(string)
+  default = [
+    "repo:Xomware/xomappetit-infrastructure",
+  ]
+}
+
+variable "default_branch" {
+  description = "Branch a push to which is allowed to run terraform apply"
+  type        = string
+  default     = "main"
+}
